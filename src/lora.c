@@ -43,8 +43,10 @@
 #define REG_MODEM_CONFIG_3             0x26
 #define REG_RSSI_WIDEBAND              0x2c
 #define REG_DETECTION_OPTIMIZE         0x31
+#define REG_INVERTIQ             	0x33
 #define REG_DETECTION_THRESHOLD        0x37
 #define REG_SYNC_WORD                  0x39
+#define REG_INVERTIQ2            0x3b
 #define REG_DIO_MAPPING_1              0x40
 #define REG_VERSION                    0x42
 
@@ -377,6 +379,20 @@ lora_disable_crc(void)
    lock();
    lora_write_reg(REG_MODEM_CONFIG_2, lora_read_reg(REG_MODEM_CONFIG_2) & 0xfb);
    unlock();
+}
+
+void 
+lora_enableInvertIQ(void)
+{
+  lora_write_reg(REG_INVERTIQ,  0x66);
+  lora_write_reg(REG_INVERTIQ2, 0x19);
+}
+
+void 
+lora_disableInvertIQ(void)
+{
+  lora_write_reg(REG_INVERTIQ,  0x27);
+  lora_write_reg(REG_INVERTIQ2, 0x1d);
 }
 
 /**

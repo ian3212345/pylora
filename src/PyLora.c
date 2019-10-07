@@ -324,6 +324,30 @@ wait_for_packet(PyObject *self, PyObject *args)
    Py_RETURN_NONE;
 }
 
+static PyObject *
+disableInvertIQ(PyObject *self)
+{
+   if(!check()) return NULL;
+   lora_disableInvertIQ();
+   Py_RETURN_NONE;
+}
+
+static PyObject *
+enableInvertIQ(PyObject *self)
+{
+   if(!check()) return NULL;
+   lora_enableInvertIQ();
+   Py_RETURN_NONE;
+}
+
+//static PyObject *
+//explicit_header_mode(PyObject *self)
+//{
+  // if(!check()) return NULL;
+   //lora_explicit_header_mode();
+   //Py_RETURN_NONE;
+//}
+
 /**
  * Method list for PyLora module
  */
@@ -353,6 +377,8 @@ static PyMethodDef metodos[] = {
    { "receive_packet", receive_packet, METH_NOARGS, "Read the last received packet" },
    { "on_receive", on_receive, METH_VARARGS, "Register a callback function for packet reception" },
    { "wait_for_packet", wait_for_packet, METH_VARARGS, "Suspend execution until a packet arrives or a timeout occurs" },
+   { "disableInvertIQ", disableInvertIQ, METH_VARARGS, "disable invert IQ" },
+   { "enableInvertIQ", enableInvertIQ, METH_VARARGS, "enable invert IQ" },
    { NULL, NULL, 0, NULL }
 };
 
