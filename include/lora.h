@@ -29,5 +29,7 @@ int lora_initialized(void);
 void lora_dump_registers(void);
 void lora_wait_for_packet(int timeout);
 void lora_on_receive(void (*cb)(void));
+void lora_enableInvertIQ();
+void lora_disableInvertIQ();
 
 #endif
