@@ -1,4 +1,9 @@
 # PyLora
+
+## This version
+
+Slightly modified with added useable InvertIQ function to match Sandeepmistry's Arduino version.
+
 ## What is it
 **PyLora** is a Python extension module for sending and receiving data through a LoRa transceiver based on Semtech's SX127_ ICs.
 
